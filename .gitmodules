@@ -1,0 +1,3 @@
+[submodule "merc"]
+	path = merc
+	url = https://github.com/MERCorg/merc
