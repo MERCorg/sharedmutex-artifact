@@ -16,7 +16,7 @@ def benchmark_to_latex(path: str) -> None:
     """Convert benchmark JSON data to LaTeX tables"""
     # Read the json file
     path_obj = Path(path)
-    output = path_obj.read_text()
+    output = path_obj.read_text(encoding="utf-8")
 
     # The regex to extract the benchmark ID
     name_re = re.compile(r"(.*) ([0-9]*) ([0-9]*) ([0-9]*)")
@@ -55,7 +55,7 @@ def benchmark_to_latex(path: str) -> None:
     # Construct a table from the data
     latex_output = path_obj.with_suffix(".tex")
 
-    with open(latex_output, "w") as file:
+    with open(latex_output, "w", encoding="utf-8") as file:
         file.write(r"""\documentclass{article}
 
 \usepackage{tikz}
@@ -104,9 +104,9 @@ name & 1 & 2 & 4 & 8 & 16 & 20 \\ \hline
             # Derive the read percentage
             read_percentage = 1.0 - 1.0 / ratio
 
-            file.write(f"""\end{{tabular}}
-\caption{{Timing benchmarks for number of threads in ms, with read percentage {read_percentage}.}}
-\end{{table}}
+            file.write(f"""\\end{{tabular}}
+\\caption{{Timing benchmarks for number of threads in ms, with read percentage {read_percentage}.}}
+\\end{{table}}
 
 """)
 
