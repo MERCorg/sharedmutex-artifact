@@ -1,0 +1,10 @@
+# IDE related ignore
+.vscode
+
+# Rust related ignore
+*target*
+
+# Ignore the tmp/ directory where we store benchmark results.
+tmp/
+
+results/
